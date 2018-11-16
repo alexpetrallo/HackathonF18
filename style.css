@@ -1,0 +1,162 @@
+/*!
+ * Start Bootstrap - 1 Col Portfolio (https://startbootstrap.com/template-overviews/1-col-portfolio)
+ * Copyright 2013-2018 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-1-col-portfolio/blob/master/LICENSE)
+ */
+
+body {
+  padding-top: 54px;
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
+}
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+}
+.btn-circle.btn-lg {
+  width: 50px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+}
+.btn-circle.btn-xl {
+  width: 70px;
+  height: 70px;
+  padding: 10px 16px;
+  font-size: 24px;
+  line-height: 1.33;
+  border-radius: 35px;
+}
+.postimg {
+  max-height: 30%;
+}
+.optiones {
+  z-index: 1;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 15%;
+  height: 30%;
+  padding-left: 1%;
+  padding-bottom: 3%;
+}
+.bottomFooter {
+  position: absolute;
+  bottom: 0;
+}
+.react {
+  text-align: center;
+}
+.pagination {
+  margin-bottom: 15px;
+}
+.feed {
+  width: 60%;
+}
+.homediv {
+  display: block;
+}
+.splash {
+  display: block;
+}
+.toptext {
+  padding-left: 5%;
+  color: white !important;
+}
+#righty {
+  text-align: center;
+  position: relative;
+  bottom: 1% !important;
+}
+#leftCard {
+  /*
+  margin-left: 5%;*/
+  width: 40% !important;
+  float: left;
+  margin: 3%;
+}
+#rightCard {
+  margin-right: 5%;
+  width: 40% !important;
+
+}
+#header {
+  height: 100%;
+}
+
+.splash {
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  height: 700px;
+  width: 100% !important;
+  margin: 0 !important;
+}
+#firstSection {
+  background-image: url("tree.jpg");
+}
+#about {
+  background-image: url("water.jpg");
+}
+#thirdSection {
+  background-image: url("new3.jpg");
+}
+#login {
+  background-image: url("surf.jpg");
+}
+#signup {
+  background-image: url("water2.jpg");
+}
+#takenHandle {
+  /*display: none !important;*/
+}
+body {
+  /*background-color: #666666;*/
+}
+#jacktext {
+  text-align: right;
+  padding-right: 3%;
+  color: white;
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+}
+#moreabout {
+  background-image: url("water2.jpg");
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+}
+.joinCard {
+  width: 50%;
+  margin-left: 20%;
+}
+#text-input {
+}
+@media only screen and (max-width: 768px) {
+  .feed {
+        width: 70%;
+   }
+   .splash {
+     background-size: auto 100%;
+     background-repeat: no-repeat;
+     overflow: scroll;
+   }
+
+   .postimg {
+     max-height: 40%;
+   }
+   .joinCard {
+     width: 80%;
+     margin: 10%;
+   }
+}
