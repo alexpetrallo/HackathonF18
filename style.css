@@ -10,10 +10,11 @@ input[type=text]{
 
 }
 
-
+/* 
 button[type=submit]{
     display: inline-block;
     width: 100%;
+
     border: none;
     padding: 20px 20px;
     margin: 2px 0px;
@@ -21,7 +22,7 @@ button[type=submit]{
     color: white;
     font-family: Georgia,"Times New Roman";
     font-size: 120%;
-}
+} */
 
 button[type=submit]:hover{
     background-color: #FF9800;
@@ -106,6 +107,11 @@ textarea{
   100% { -webkit-transform: rotate(360deg); }
 }
 
+
+.card-img-top{
+    width: 75%;
+    height: 0px;
+}
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
