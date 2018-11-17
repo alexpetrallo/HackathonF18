@@ -14,8 +14,8 @@ $(document).on('click', '#report', function() {
 });
 $(document).on('click', '#postButton', function() {
   var postVal = document.getElementById("captionText").value;
-  if(postVal()) {
-
+  if(postVal) {
+    
     var user = sessionStorage.user;
     getIPAddress();
     console.log(postVal + " " + user + " " + " " + longii + " " + latii)
@@ -36,6 +36,7 @@ $(document).on('click', '#postButton', function() {
         success: function(data){
           console.log("succ" + data);
           showPosition(navigator.geolocation.getCurrentPosition(showPosition));
+          document.getElementById("captionText").value = "";
         },
         error: function(data) {
              console.log(data);
