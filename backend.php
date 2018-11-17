@@ -94,6 +94,23 @@ function upvote($connect){
     $run_query = mysqli_query($connect, $query);
   }
 }
+
+// downvote code
+function downvote($connect){
+  $ip = mysqli_real_escape_string($connect, $_POST['ip_address']);
+  $post_id = mysqli_real_escape_string($connect, $_POST['post_id']);
+
+  $query = "SELECT COUNT(*) FROM updown WHERE ip = '$ip' and post_id = '$post_id';";
+  $result = mysqli_fetch_array(mysqli_query($connect, $query));
+  $results = $result['COUNT(*)'];
+  if ($results > 1){
+    $query = "UPDATE updown SET up_or_down = 'd' WHERE ip = '$ip' and post_id = '$post_id';";
+    $run_query = mysqli_query($connect, $query);
+  } else {
+    $query = "INSERT INTO updown (ip, post_id, up_or_down) VALUES ('$ip', '$post_id', 'd');";
+    $run_query = mysqli_query($connect, $query);
+  }
+}
 $method = $_GET['method'];
 if (!empty($method)){
   $method($connect);
