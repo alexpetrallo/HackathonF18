@@ -13,15 +13,17 @@
 #header-text{
     color: antiquewhite;
     margin-right: 60%;
-    margin-bottom: 10%;
+    
+    text-shadow: #000;
+
 
 }
 #formBox{
     padding-top: 20px;
-    height: 50vh;
+    height: 40vh;
     width: 50%;
     border: 2px solid #000;
-    background: rgba(224, 215, 215, 0.5);
+    background: rgba(224, 215, 215, 0.7);
     text-align: center  !important;
     justify-content: center;
     margin-left: 25%;
@@ -29,9 +31,7 @@
 
 
 }
-#username{
-    float: left !important; 
-}
+
 #spider{
     width: 20px;
     height: 30px;
@@ -44,4 +44,10 @@
 #header{
     text-align: center;
     display: flex;
+}
+#username{
+    /* float: left !important; */
+    color: #5D6B2D;
+    text-align:left ;
+    padding-left: 10px; 
 }

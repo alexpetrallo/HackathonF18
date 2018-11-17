@@ -10,16 +10,20 @@
   <body>
     <div class = "container background text-center flex-column">
       
-      <h2 id ="header-text">CobWeb</h2> 
-      <div id = "formBox" class = "flex-column card text-center">      
+      <h1 id ="header-text">CobWeb</h1> 
+         
+     
+      <div id = "formBox" class = "flex-column card text-center"> 
+          <h3 id = "username">username:</h3>
             <div class="form-group card-body text-center">
-              <label for="userInput"><div><h3>username:</h3></div></label>
+              
               <input type="text" class="form-control" id="userInput" placeholder="a username">
               <img id = "spider" src="spider-solid.svg">
               <small id="userHelp" class="form-text text-muted">don't worry this ain't permanent</small>
             </div>
-
-            <button type="submit" id="submitbutton" class="btn btn-primary">Get Started</button>
+            <div>
+                <button type="submit" id="submitbutton" class="btn btn-primary col-sm-3">Get Started</button>
+            </div>
             
         <p>post by clicking the submit button</p>
       </div>
