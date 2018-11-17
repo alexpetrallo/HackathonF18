@@ -12,9 +12,10 @@ function post_post($connect) {
   $username = mysqli_real_escape_string($connect, $_POST['username']);
   $long = mysqli_real_escape_string($connect, $_POST['long']);
   $lat = mysqli_real_escape_string($connect, $_POST['lat']);
+
   $query = "INSERT INTO posts (username, message, datetime_msg, location_long, location_lat) VALUES ('$user_id', '$content', 'NOW()', '$long', '$lat');";
   $run_query = mysqli_query($connect, $query);
-  echo "posted";
+  echo "posted $content, $username, $long, $lat, $ip";
 }
 
 function strike_ip($connect){
