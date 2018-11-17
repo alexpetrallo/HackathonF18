@@ -1,5 +1,5 @@
 $( document ).ready(function() {
-  if (sessionStorage.user && sessionStorage.user_id) {
+  if (sessionStorage.user) {
     //load feed here
   } else {
     window.location = "https://www.waytowave.com/cobweb/";
