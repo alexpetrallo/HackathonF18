@@ -2,7 +2,7 @@ $( document ).ready(function() {
   if (sessionStorage.user && sessionStorage.user_id) {
     //load feed here
   } else {
-    window.location = "https://www.waytowave.com/cobweb/home";
+    window.location = "https://www.waytowave.com/cobweb/";
   }
 });
 var ip_address;
@@ -13,7 +13,7 @@ var getIPAddress = function() {
 };
 function strike_ip() {
   $.ajax({
-      url: "/backend.php?method=strike_ip, // Url to which the request is send
+      url: "/backend.php?method=strike_ip", // Url to which the request is send
       type: "POST",             // Type of request to be send, called as method
       data :{ip:ip_address},
       contentType: false,       // The content type used when sending data to the server.
