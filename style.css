@@ -172,6 +172,9 @@ li a:hover {
   animation: spin 1s linear infinite;
 }
 
+textarea{
+    width: 100%;
+}
 /* Safari */
 @-webkit-keyframes spin {
   0% { -webkit-transform: rotate(0deg); }
