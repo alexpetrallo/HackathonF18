@@ -9,6 +9,9 @@ $( document ).ready(function() {
     window.location = "https://www.waytowave.com/cobweb/";
   }
 });
+$(document).on('click', '#report', function() {
+
+});
 $(document).on('click', '#postButton', function() {
   var postVal = document.getElementById("captionText").value;
   if(postVal()) {
@@ -21,6 +24,8 @@ $(document).on('click', '#postButton', function() {
     formData.append('content', postVal);
     formData.append('long', longii);
     formData.append('lat', latii);
+    formData.append('ip', ip_address);
+
     $.ajax({
         url: "/cobweb/backend.php?method=post_post&long="+longii+"&lat="+latii, // Url to which the request is send
         type: "POST",
@@ -63,6 +68,7 @@ function showPosition(position) {
       error: function(data){ console.log("fail" + data);},
     });
 }
+
 function strike_ip() {
   $.ajax({
       url: "/cobweb/backend.php?method=strike_ip", // Url to which the request is send
