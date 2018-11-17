@@ -18,6 +18,8 @@ function post_post($connect) {
 }
 
 function strike_ip($connect){
-  
+  $ip = mysqli_real_escape_string($connect, $_POST['ip_address']);
+  $query = "INSERT INTO banned_ips (ip, strike) VALUES ('$ip', '1');";
+  $run_query = mysqli_query($connect, $query);
 }
 ?>
