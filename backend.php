@@ -17,4 +17,7 @@ function post_post($connect) {
   echo "posted";
 }
 
+function strike_ip($connect){
+  
+}
 ?>
