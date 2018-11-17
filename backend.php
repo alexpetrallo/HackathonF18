@@ -13,7 +13,7 @@ function post_post($connect) {
   $long = mysqli_real_escape_string($connect, $_POST['long']);
   $lat = mysqli_real_escape_string($connect, $_POST['lat']);
 
-  $query = "INSERT INTO posts (username, message, datetime_msg, location_long, location_lat) VALUES ('$user_id', '$content', 'NOW()', '$long', '$lat');";
+  $query = "INSERT INTO posts (username, message, datetime_msg, location_long, location_lat) VALUES ('$username', '$content', NOW(), '$long', '$lat');";
   $run_query = mysqli_query($connect, $query);
   echo "posted $content, $username, $long, $lat, $ip";
 }
@@ -25,15 +25,15 @@ function strike_ip($connect){
 }
 function getposts($connect){
   $to_return = "";
-  $long = str_replace("-","",mysqli_real_escape_string($connect, $_GET['long']));
-  $lat = str_replace("-","",mysqli_real_escape_string($connect, $_GET['lat']));
+  $long = mysqli_real_escape_string($connect, $_GET['long']);
+  $lat = mysqli_real_escape_string($connect, $_GET['lat']);
   $query = "SELECT
     *, (
       3959 * acos (
-      cos ( radians($long) )
+      cos ( radians($lat) )
       * cos( radians( location_lat ) )
-      * cos( radians( location_long ) - radians($lat) )
-      + sin ( radians($long) )
+      * cos( radians( location_long ) - radians($long) )
+      + sin ( radians($lat) )
       * sin( radians( location_lat ) )
     )
     ) AS distance
@@ -41,11 +41,11 @@ function getposts($connect){
     HAVING distance < 100
     ORDER BY datetime_msg DESC
     LIMIT 0 , 20;";
-    //echo $query;
 $resss = mysqli_query($connect, $query);
 $resultArray = mysqli_fetch_array($resss, MYSQLI_ASSOC);
 //$to_return .= "balls $long $lat test";
 while ($resultArray) {
+  $post_id = $resultArray['post_id'];
   $username = $resultArray['username'];
   $message = $resultArray['message'];
   $timestamp = $resultArray['datetime_msg'];
@@ -54,7 +54,7 @@ while ($resultArray) {
       <div class=\"card-header\">
           $username
       </div>
-      <div class=\"card-body\">
+      <div class=\"card-body\" data-id3=\'" . $row["id"] . "''>
         <p class=\"card-text\">$message</p>
       </div>
       <div class=\"card-footer\">
@@ -62,7 +62,7 @@ while ($resultArray) {
 
       </div>
 
-    </div>";
+    </div></br>";
     $to_return .= $card_example;
     $resultArray = mysqli_fetch_array($resss, MYSQLI_ASSOC);
   }
@@ -78,6 +78,14 @@ function check_if_banned_ip($connect){
   } else {
     echo "allowed";
   }
+}
+function upvote($connect){
+  $ip = mysqli_real_escape_string($connect, $_POST['ip_address']);
+  $post_id = mysqli_real_escape_string($connect, $_POST['post_id']);
+
+  $query = "SELECT COUNT(*) FROM banned_ips WHERE ip = '$ip'";
+  $result = mysqli_fetch_array(mysqli_query($connect, $query));
+  $results = $result['COUNT(*)'];
 }
 $method = $_GET['method'];
 if (!empty($method)){
