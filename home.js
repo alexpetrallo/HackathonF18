@@ -1,9 +1,11 @@
 $( document ).ready(function() {
   //getPosts();
+
   console.log(sessionStorage.user);
   if (sessionStorage.user) {
     //load feed here
     //getPosts();
+    getIPAddress();
     showPosition(navigator.geolocation.getCurrentPosition(showPosition));
   } else {
     window.location = "https://www.waytowave.com/cobweb/";
@@ -15,7 +17,7 @@ $(document).on('click', '#report', function() {
 $(document).on('click', '#postButton', function() {
   var postVal = document.getElementById("captionText").value;
   if(postVal) {
-    
+
     var user = sessionStorage.user;
     getIPAddress();
     console.log(postVal + " " + user + " " + " " + longii + " " + latii)
@@ -36,13 +38,56 @@ $(document).on('click', '#postButton', function() {
         success: function(data){
           console.log("succ" + data);
           showPosition(navigator.geolocation.getCurrentPosition(showPosition));
-          document.getElementById("captionText").value = "";
+
         },
         error: function(data) {
              console.log(data);
           },
       });
+      $("#captionText").val('');
+        console.log("butts " + $("#captionText").value);
     }
+});
+$(document).on('click', '#upvote', function() {
+  var post_id = $(this).data("id");
+  console.log(post_id + " this dont wokr or do it");
+  var formData = new FormData();
+  formData.append('post_id', post_id);
+  formData.append('ip_address', ip_address);
+  $.ajax({
+      url: "/cobweb/backend.php?method=upvote", // Url to which the request is send
+      type: "POST",             // Type of request to be send, called as method
+      data: formData, // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+      contentType: false,       // The content type used when sending data to the server.
+      cache: false,             // To unable request pages to be cached
+      processData:false,        // To send DOMDocument or non processed data file it is set to false
+      success: function(data){
+        //increase val by one temporarily?
+        console.log(data);
+        
+      },
+      error: function(data){ console.log("fail" + data);},
+    });
+});
+$(document).on('click', '#downvote', function() {
+  var post_id = $(this).data("id");
+  console.log(post_id + " this dont wokr or do it");
+  var formData = new FormData();
+  formData.append('post_id', post_id);
+  formData.append('ip_address', ip_address);
+  $.ajax({
+      url: "/cobweb/backend.php?method=downvote", // Url to which the request is send
+      type: "POST",             // Type of request to be send, called as method
+      data: formData, // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+      contentType: false,       // The content type used when sending data to the server.
+      cache: false,             // To unable request pages to be cached
+      processData:false,        // To send DOMDocument or non processed data file it is set to false
+      success: function(data){
+        //increase val by one temporarily?
+        console.log(data);
+      },
+      error: function(data){ console.log("fail" + data);},
+    });
 });
 var ip_address;
 var getIPAddress = function() {
@@ -83,8 +128,4 @@ function strike_ip() {
         console.log(data);
       }
     });
-}
-function post_post() {
-
-
 }

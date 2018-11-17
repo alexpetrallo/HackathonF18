@@ -24,7 +24,6 @@ function strike_ip($connect){
   $run_query = mysqli_query($connect, $query);
 }
 function getScore($post_id, $connect){
-  $post_id =  mysqli_real_escape_string($connect, $_GET['post_id']);
   $query = "SELECT (SELECT COUNT(*) FROM updown WHERE post_id = '$post_id' AND up_or_down = 'u') - (SELECT COUNT(*) FROM updown WHERE post_id = '$post_id' AND up_or_down = 'd') as sum;";
 
   $result = mysqli_fetch_array(mysqli_query($connect, $query));
@@ -53,7 +52,7 @@ $resss = mysqli_query($connect, $query);
 $resultArray = mysqli_fetch_array($resss, MYSQLI_ASSOC);
 //$to_return .= "balls $long $lat test";
 while ($resultArray) {
-  $post_id = $resultArray['post_id'];
+  $post_id = $resultArray['id'];
   $sum = getScore($post_id, $connect);
   $username = $resultArray['username'];
   $message = $resultArray['message'];
@@ -63,7 +62,7 @@ while ($resultArray) {
     <div class=\"card text-post\">
       <div class=\"card-header\" style=\"height: 75px;\">
           <span class= \"h5\">$username</span>
-          <right><button class=\"btn-danger\" id=\"report\" data-id=\'" . $post_id . "'><i class=\"fas fa-flag\"></i></button></right>
+          <right><button class=\"btn-danger\" id=\"report\" data-id='" . $post_id . "'><i class=\"fas fa-flag\"></i></button></right>
       </div>
       <div class=\"card-body\" style=\"height: 150px;\">
         <h5 class=\"card-text\">$message</h5>
@@ -72,21 +71,11 @@ while ($resultArray) {
         <span class=\"card-text\"><i>$timestamp</i></span> | <span class=\"card-text\" >$longlat</span>
       </div>
       <div class=\"card-footer\">
-          <button class=\"btn\" id=\"upvote\"><i class=\"fas fa-arrow-up\"></i></button>
+          <button class=\"btn\" id=\"upvote\" data-id='" . $post_id . "'><i class=\"fas fa-arrow-up\"></i></button>
           <span id=\"voteCount\"> $sum </span>
           <button class=\"btn\" id =\"downvote\" data-id='" . $post_id . "'><i class=\"fas fa-arrow-down\"></i></button>
         </div>
-        <div class=\"card-footer\">
-            <div class=\"card-header h-25\">
-              Username <span class = \"float-right\"><em>posted TIME ago</em></span>
-            </div>
-            <div class=\"card-body\">
-              <blockquote class=\"blockquote mb-0 h-25\">
-                <p style = \"height: 30px\">el comento.</p>
-                <!-- <footer class=\"blockquote-footer\">Someone famous in <cite title=\"Source Title\">Source Title</cite></footer> -->
-              </blockquote>
-            </div>
-        </div>
+
       </div></br>
 
 
@@ -114,6 +103,8 @@ function upvote($connect){
   $query = "SELECT COUNT(*) FROM updown WHERE ip = '$ip' and post_id = '$post_id';";
   $result = mysqli_fetch_array(mysqli_query($connect, $query));
   $results = $result['COUNT(*)'];
+  echo $results;
+
   if ($results > 1){
     $query = "UPDATE updown SET up_or_down = 'u' WHERE ip = '$ip' and post_id = '$post_id';";
     $run_query = mysqli_query($connect, $query);
@@ -131,6 +122,7 @@ function downvote($connect){
   $query = "SELECT COUNT(*) FROM updown WHERE ip = '$ip' and post_id = '$post_id';";
   $result = mysqli_fetch_array(mysqli_query($connect, $query));
   $results = $result['COUNT(*)'];
+  echo $results;
   if ($results > 1){
     $query = "UPDATE updown SET up_or_down = 'd' WHERE ip = '$ip' and post_id = '$post_id';";
     $run_query = mysqli_query($connect, $query);
