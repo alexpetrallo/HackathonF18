@@ -40,12 +40,12 @@
   </br>
     <div class="container" id="cardss">
       <div class="card text-post">
-        <div class="card-header">
-            username here
+        <div class="card-header" style="height: 75px;">
+            <span class= "h5">username here</span>
             <right><button class = "btn-danger" id ="report"><i class="fas fa-flag"></i> Report This Post? <i class="fas fa-flag"></i></button></right>
         </div>
-        <div class="card-body">
-          <p class="card-text">message here</p>
+        <div class="card-body" style="height: 150px;">
+          <h5 class="card-text">message here</h5>
         </div>
         <div class="card-footer">
           <span class="card-text"><i>timestamp here</i></span> | <span class="card-text" >longlat here</span>
@@ -56,8 +56,18 @@
             <span id="voteCount"> 0 </span>
             <button class="btn" id = "downvote"><i class="fas fa-arrow-down"></i></button>
           </div>
-
-
+      
+          <div class="card-footer">
+              <div class="card-header h-25">
+                Username <span class = "float-right"><em>posted TIME ago</em></span>
+              </div>
+              <div class="card-body">
+                <blockquote class="blockquote mb-0 h-25">
+                  <p style = "height: 30px">el comento.</p>
+                  <!-- <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer> -->
+                </blockquote>
+              </div>
+          </div>
       </div>
     </div>
   <!-- Bootstrap core JavaScript -->
