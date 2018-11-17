@@ -22,4 +22,15 @@ function strike_ip($connect){
   $query = "INSERT INTO banned_ips (ip, strike) VALUES ('$ip', '1');";
   $run_query = mysqli_query($connect, $query);
 }
+function check_if_banned_ip($connect){
+  $ip = mysqli_real_escape_string($connect, $_POST['ip_address']);
+  $query = "SELECT COUNT(*) FROM banned_ips WHERE ip = '$ip'";
+  $result = mysqli_fetch_array(mysqli_query($connect, $query));
+  $results = $result['COUNT(*)'];
+  if($results > 2){
+    echo "banned";
+  } else {
+    echo "allowed";
+  }
+}
 ?>

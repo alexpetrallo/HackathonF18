@@ -18,9 +18,17 @@
               Username:<br>
               <input id ="username" type="text" name="username1" placeholder="username">
               <br>
-              <input id = "submitbutton" type="submit" value="Submit"> 
-            </form> 
-      
+              <input id = "submitbutton" type="submit" value="Submit">
+            </form>
+            <form>
+                <div class="form-group">
+                  <label for="userInput">username:</label>
+                  <input type="text" class="form-control" id="userInput" placeholder="a username">
+                  <small id="userHelp" class="form-text text-muted">don't worry this ain't permanent</small>
+                </div>
+
+                <button type="submit" id="submitbutton" class="btn btn-primary">Get Started</button>
+              </form>
           <p>post by clicking the submit button</p>
           <!-- If you
       </div>
@@ -28,5 +36,5 @@
        click the "Submit" button, the form-data will be sent to a page called "/action_page.php" -->
   </body>
     </div>
-   
+
 </html>
