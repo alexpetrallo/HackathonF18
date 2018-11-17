@@ -1,40 +1,36 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel = "stylesheet" src = "styles.css"></link>
+    <script src = "login.js"></script>
+    <link rel = "stylesheet" href = "styles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   </head>
   <body>
-    <div class = "container">
+    <div class = "container background">
+      <div id = "formBox d-flex justify-content-center">
       <h2 id ="header">Cob Web</h2>
 
-
-
-
-
-
-      <div class = "col justify-content-md-center">
-          <form  >
+          <!-- <form  >
               Username:<br>
               <input id ="username" type="text" name="username1" placeholder="username">
               <br>
               <input id = "submitbutton" type="submit" value="Submit">
+            </form> -->
+          
+          <form >
+              <div class="form-group">
+                <label for="userInput">username:</label>
+                <input type="text" class="form-control" id="userInput" placeholder="a username">
+                <small id="userHelp" class="form-text text-muted">don't worry this ain't permanent</small>
+              </div>
+
+              <button type="submit" id="submitbutton" class="btn btn-primary">Get Started</button>
             </form>
-            <form>
-                <div class="form-group">
-                  <label for="userInput">username:</label>
-                  <input type="text" class="form-control" id="userInput" placeholder="a username">
-                  <small id="userHelp" class="form-text text-muted">don't worry this ain't permanent</small>
-                </div>
-
-                <button type="submit" id="submitbutton" class="btn btn-primary">Get Started</button>
-              </form>
-          <p>post by clicking the submit button</p>
-          <!-- If you
+        <p>post by clicking the submit button</p>
       </div>
-
-       click the "Submit" button, the form-data will be sent to a page called "/action_page.php" -->
-  </body>
     </div>
+
+  </body>
+    
 
 </html>
