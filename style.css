@@ -1,162 +1,184 @@
-/*!
- * Start Bootstrap - 1 Col Portfolio (https://startbootstrap.com/template-overviews/1-col-portfolio)
- * Copyright 2013-2018 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-1-col-portfolio/blob/master/LICENSE)
- */
+* {
+  box-sizing: border-box;
+}
+
+input[type=text]{
+    width: 100%;
+    border: none;
+    padding: 5px 20px;
+    margin: 2px 0px;
+
+}
+
+input[type=email]{
+    width: 100%;
+    border: none;
+    padding: 5px 20px;
+    margin: 2px 0px;
+}
+
+input[type=password]{
+    width: 100%;
+    border: none;
+    padding: 5px 20px;
+    margin: 2px 0px;
+}
+
+button[type=submit]{
+    display: inline-block;
+    width: 100%;
+    border: none;
+    padding: 20px 20px;
+    margin: 2px 0px;
+    background-color: #FF9800;
+    color: white;
+    font-family: Georgia,"Times New Roman";
+    font-size: 120%;
+}
+
+button[type=submit]:hover{
+    background-color: #FF9800;
+}
+
+button {
+    transition: transform .2s;
+}
+
+button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+#facebook{
+    width: 100%;
+    border: none;
+    padding: 17px 20px;
+    margin: 15px 0px;
+    background-color:#3B5998;
+    color: white;
+    font-family: Georgia,"Times New Roman";
+    font-size: 120%;
+}
+
+#twitter{
+    width: 100%;
+    border: none;
+    padding: 17px 20px;
+    margin: 15px 0px;
+    background-color:#1DA1F2;
+    color: white;
+    font-family: Georgia,"Times New Roman";
+    font-size: 120%;
+}
+
+#google{
+    width: 100%;
+    border: none;
+    padding: 17px 20px;
+    margin: 15px 0px;
+   /* background-color:#DB3236;*/
+    background-color:#DC3030;
+    color: white;
+    font-family: Georgia,"Times New Roman";
+    font-size: 120%;
+}
+
+.image{
+    width: 30px;
+    height:30px;
+}
+.center_div{
+    margin: 0 auto;
+    width:80% /* value of your choice which suits your alignment */
+}
+html, body { height:100%; }
+/*.btn{
+    display:table;
+    margin:0 auto;
+}*/
 
 body {
-  padding-top: 54px;
+    background: url(../images/img.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;  
 }
 
-@media (min-width: 992px) {
-  body {
-    padding-top: 56px;
-  }
-}
-.btn-circle {
-  width: 30px;
-  height: 30px;
-  text-align: center;
-  padding: 6px 0;
-  font-size: 12px;
-  line-height: 1.428571429;
-  border-radius: 15px;
-}
-.btn-circle.btn-lg {
-  width: 50px;
-  height: 50px;
-  padding: 10px 16px;
-  font-size: 18px;
-  line-height: 1.33;
-  border-radius: 25px;
-}
-.btn-circle.btn-xl {
-  width: 70px;
-  height: 70px;
-  padding: 10px 16px;
-  font-size: 24px;
-  line-height: 1.33;
-  border-radius: 35px;
-}
-.postimg {
-  max-height: 30%;
-}
-.optiones {
-  z-index: 1;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 15%;
-  height: 30%;
-  padding-left: 1%;
-  padding-bottom: 3%;
-}
-.bottomFooter {
-  position: absolute;
-  bottom: 0;
-}
-.react {
-  text-align: center;
-}
-.pagination {
-  margin-bottom: 15px;
-}
-.feed {
-  width: 60%;
-}
-.homediv {
-  display: block;
-}
-.splash {
-  display: block;
-}
-.toptext {
-  padding-left: 5%;
-  color: white !important;
-}
-#righty {
-  text-align: center;
-  position: relative;
-  bottom: 1% !important;
-}
-#leftCard {
-  /*
-  margin-left: 5%;*/
-  width: 40% !important;
-  float: left;
-  margin: 3%;
-}
-#rightCard {
-  margin-right: 5%;
-  width: 40% !important;
-
-}
-#header {
-  height: 100%;
+p{
+    font-weight: normal;
+    font-size: 120%;
+    color: grey;
+    text-align: center;
 }
 
-.splash {
-  background-size: 100% auto;
-  background-repeat: no-repeat;
-  height: 700px;
-  width: 100% !important;
-  margin: 0 !important;
+h1{
+    font-weight: bold;
+    text-shadow: 2px 2px 4px grey;
+    font-size: 50px;
 }
-#firstSection {
-  background-image: url("tree.jpg");
-}
-#about {
-  background-image: url("water.jpg");
-}
-#thirdSection {
-  background-image: url("new3.jpg");
-}
-#login {
-  background-image: url("surf.jpg");
-}
-#signup {
-  background-image: url("water2.jpg");
-}
-#takenHandle {
-  /*display: none !important;*/
-}
-body {
-  /*background-color: #666666;*/
-}
-#jacktext {
-  text-align: right;
-  padding-right: 3%;
-  color: white;
-  position: absolute;
-  bottom: 5%;
-  right: 5%;
-}
-#moreabout {
-  background-image: url("water2.jpg");
-  background-size: 100% auto;
-  background-repeat: no-repeat;
-}
-.joinCard {
-  width: 50%;
-  margin-left: 20%;
-}
-#text-input {
-}
-@media only screen and (max-width: 768px) {
-  .feed {
-        width: 70%;
-   }
-   .splash {
-     background-size: auto 100%;
-     background-repeat: no-repeat;
-     overflow: scroll;
-   }
 
-   .postimg {
-     max-height: 40%;
-   }
-   .joinCard {
-     width: 80%;
-     margin: 10%;
-   }
+.border{
+    text-align: left;
+    border:1px solid grey;
+    border-style: groove;
+    height:auto;
+    box-shadow: 5px 5px 10px 8px #888888;
+    font-weight: bold;
+    background-color: white;
+}
+@media (min-width: 1200px) {
+    .container{
+        max-width: 750px;
+    }
+}
+.container{
+    margin-bottom: 50px;
+    /*margin-top: 100px;*/
+}
+.btn{
+    white-space:normal;
+}
+.img{
+    margin-left: auto;
+}
+br + p{
+    color: black;
+    font-weight: bold;
+    font-size: 150%;
+    text-align: left;
+}
+#forgot{
+    color:grey;
+    font-size:90%;
+    text-align: left;
+}
+
+li a{
+    color: #FF9800;
+}
+
+li a:hover {
+    color: #FFCC80;
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #FF9800;
+  margin: auto;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 1s linear infinite; /* Safari */
+  animation: spin 1s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
