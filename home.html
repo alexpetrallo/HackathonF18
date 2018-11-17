@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="home.js"></script>
+    <link rel="stylesheet" href="stylez.css">
 
     <title>cobweb</title>
 
@@ -41,6 +42,7 @@
       <div class="card text-post">
         <div class="card-header">
             username here
+            <right><button class = "btn-danger" id ="report"><i class="fas fa-flag"></i> Report This Post? <i class="fas fa-flag"></i></button></right>
         </div>
         <div class="card-body">
           <p class="card-text">message here</p>
@@ -49,6 +51,12 @@
           <span class="card-text"><i>timestamp here</i></span> | <span class="card-text" >longlat here</span>
 
         </div>
+        <div class="card-footer">
+            <button class="btn" id = "upvote"><i class="fas fa-arrow-up"></i></button> 
+            <span id="voteCount"> 0 </span>
+            <button class="btn" id = "downvote"><i class="fas fa-arrow-down"></i></button>
+          </div>
+
 
       </div>
     </div>
