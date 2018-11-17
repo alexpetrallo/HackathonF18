@@ -3,6 +3,8 @@ $(document).on('click', '#submitbutton', function(){
    var usernameValue = document.getElementById("userInput").value;
    sessionStorage.user = usernameValue;
    console.log(usernameValue);
-   window.location = "https://www.waytowave.com/cobweb/home";
-
+   //window.location = "https://www.waytowave.com/cobweb/home";
+   if (sessionStorage.user) {
+     window.location = "https://www.waytowave.com/cobweb/home";
+   }
 });
