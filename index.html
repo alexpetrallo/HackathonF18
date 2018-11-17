@@ -8,25 +8,17 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   </head>
   <body>
-    <div class = "container background">
-      <div id = "formBox">
-      <h2 id ="header">Cob Web</h2>
+    <div class = "container background text-center flex-column flex-row">
+      
+      <h2 id ="header">Cob Web</h2> 
+      <div id = "formBox">      
+            <div class="form-group">
+              <label for="userInput"><h3>username:</h3></label>
+              <input type="text" class="form-control" id="userInput" placeholder="a username">
+              <small id="userHelp" class="form-text text-muted">don't worry this ain't permanent</small>
+            </div>
 
-          <!-- <form  >
-              Username:<br>
-              <input id ="username" type="text" name="username1" placeholder="username">
-              <br>
-              <input id = "submitbutton" type="submit" value="Submit">
-            </form> -->
-
-          
-              <div class="form-group">
-                <label for="userInput">username:</label>
-                <input type="text" class="form-control" id="userInput" placeholder="a username">
-                <small id="userHelp" class="form-text text-muted">don't worry this ain't permanent</small>
-              </div>
-
-              <button type="submit" id="submitbutton" class="btn btn-primary">Get Started</button>
+            <button type="submit" id="submitbutton" class="btn btn-primary">Get Started</button>
             
         <p>post by clicking the submit button</p>
       </div>
