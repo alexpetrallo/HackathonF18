@@ -12,14 +12,27 @@ function post_post($connect) {
   $username = mysqli_real_escape_string($connect, $_POST['username']);
   $long = mysqli_real_escape_string($connect, $_POST['long']);
   $lat = mysqli_real_escape_string($connect, $_POST['lat']);
-
-  $query = "INSERT INTO posts (username, message, datetime_msg, location_long, location_lat) VALUES ('$username', '$content', NOW(), '$long', '$lat');";
+  $ip = mysqli_real_escape_string($connect, $_POST['ip']);
+  $query = "INSERT INTO posts (username, message, datetime_msg, location_long, location_lat, ip) VALUES ('$username', '$content', NOW(), '$long', '$lat', '$ip');";
   $run_query = mysqli_query($connect, $query);
   echo "posted $content, $username, $long, $lat, $ip";
 }
-
+function strike_count($connect){
+  $ip = mysqli_real_escape_string($connect, $_POST['ip']);
+  $querya = "SELECT COUNT(*) FROM banned_ips WHERE ip = '$ip';";
+  $result = mysqli_fetch_array(mysqli_query($connect, $querya));
+  $ipCt = $result['COUNT(*)'];
+  if($ipCt == "0" || $ipCt == "1" || $ipCt == "2"){
+    echo "u good$ipCt $querya";
+  } else {
+    echo "banned";
+  }
+}
 function strike_ip($connect){
-  $ip = mysqli_real_escape_string($connect, $_POST['ip_address']);
+  $post_id = mysqli_real_escape_string($connect, $_POST['post_id']);
+  $querya = "SELECT ip FROM posts WHERE id = '$post_id';";
+  $result = mysqli_fetch_array(mysqli_query($connect, $querya));
+  $ip = $result['ip'];
   $query = "INSERT INTO banned_ips (ip, strike) VALUES ('$ip', '1');";
   $run_query = mysqli_query($connect, $query);
 }
@@ -71,9 +84,9 @@ while ($resultArray) {
         <span class=\"card-text\"><i>$timestamp</i></span> | <span class=\"card-text\" >$longlat</span>
       </div>
       <div class=\"card-footer\">
-          <button class=\"btn\" id=\"upvote\" data-id='" . $post_id . "'><i class=\"fas fa-arrow-up\"></i></button>
-          <span id=\"voteCount\"> $sum </span>
-          <button class=\"btn\" id =\"downvote\" data-id='" . $post_id . "'><i class=\"fas fa-arrow-down\"></i></button>
+          <button class=\"btn btn-outline-success\" id=\"upvote\" data-id='" . $post_id . "'><i class=\"fas fa-arrow-up\"></i></button>
+          <span id=\"voteCount\">$sum</span>
+          <button class=\"btn btn-outline-danger\" id =\"downvote\" data-id='" . $post_id . "'><i class=\"fas fa-arrow-down\"></i></button>
         </div>
 
       </div></br>
@@ -83,7 +96,16 @@ while ($resultArray) {
     $to_return .= $card_example;
     $resultArray = mysqli_fetch_array($resss, MYSQLI_ASSOC);
   }
+  if($to_return == ""){
+    $to_return = "<div class=\"card text-post\"><div class=\"card-body\" style=\"height: 150px;\">
+      <h5 class=\"card-text\">The end. Share something above!</h5>
+    </div></div>";
+  }
   echo $to_return;
+}
+function delete_past($connect){
+  $query = "DELETE FROM posts WHERE `datetime_msg` < (NOW() - INTERVAL 30 MINUTE);";
+  mysqli_query($connect, $query);
 }
 function check_if_banned_ip($connect){
   $ip = mysqli_real_escape_string($connect, $_POST['ip_address']);
@@ -105,7 +127,7 @@ function upvote($connect){
   $results = $result['COUNT(*)'];
   echo $results;
 
-  if ($results > 1){
+  if ($results == "1"){
     $query = "UPDATE updown SET up_or_down = 'u' WHERE ip = '$ip' and post_id = '$post_id';";
     $run_query = mysqli_query($connect, $query);
   } else {
@@ -123,7 +145,7 @@ function downvote($connect){
   $result = mysqli_fetch_array(mysqli_query($connect, $query));
   $results = $result['COUNT(*)'];
   echo $results;
-  if ($results > 1){
+  if ($results == "1"){
     $query = "UPDATE updown SET up_or_down = 'd' WHERE ip = '$ip' and post_id = '$post_id';";
     $run_query = mysqli_query($connect, $query);
   } else {
