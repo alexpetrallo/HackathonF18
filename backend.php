@@ -23,6 +23,14 @@ function strike_ip($connect){
   $query = "INSERT INTO banned_ips (ip, strike) VALUES ('$ip', '1');";
   $run_query = mysqli_query($connect, $query);
 }
+function getScore($post_id, $connect){
+  $post_id =  mysqli_real_escape_string($connect, $_GET['post_id']);
+  $query = "SELECT (SELECT COUNT(*) FROM updown WHERE post_id = '$post_id' AND up_or_down = 'u') - (SELECT COUNT(*) FROM updown WHERE post_id = '$post_id' AND up_or_down = 'd') as sum;";
+
+  $result = mysqli_fetch_array(mysqli_query($connect, $query));
+  $sum = $result['sum'];
+  return $sum;
+}
 function getposts($connect){
   $to_return = "";
   $long = mysqli_real_escape_string($connect, $_GET['long']);
@@ -46,23 +54,43 @@ $resultArray = mysqli_fetch_array($resss, MYSQLI_ASSOC);
 //$to_return .= "balls $long $lat test";
 while ($resultArray) {
   $post_id = $resultArray['post_id'];
+  $sum = getScore($post_id, $connect);
   $username = $resultArray['username'];
   $message = $resultArray['message'];
   $timestamp = $resultArray['datetime_msg'];
   $longlat = $resultArray['location_long'] . ", " . $resultArray['location_lat'];
-  $card_example = "<div class=\"card text-post\">
-      <div class=\"card-header\">
-          $username
+  $card_example = "
+    <div class=\"card text-post\">
+      <div class=\"card-header\" style=\"height: 75px;\">
+          <span class= \"h5\">$username</span>
+          <right><button class=\"btn-danger\" id=\"report\" data-id=\'" . $post_id . "'><i class=\"fas fa-flag\"></i></button></right>
       </div>
-      <div class=\"card-body\" data-id3=\'" . $row["id"] . "''>
-        <p class=\"card-text\">$message</p>
+      <div class=\"card-body\" style=\"height: 150px;\">
+        <h5 class=\"card-text\">$message</h5>
       </div>
       <div class=\"card-footer\">
         <span class=\"card-text\"><i>$timestamp</i></span> | <span class=\"card-text\" >$longlat</span>
-
       </div>
+      <div class=\"card-footer\">
+          <button class=\"btn\" id=\"upvote\"><i class=\"fas fa-arrow-up\"></i></button>
+          <span id=\"voteCount\"> $sum </span>
+          <button class=\"btn\" id =\"downvote\" data-id='" . $post_id . "'><i class=\"fas fa-arrow-down\"></i></button>
+        </div>
+        <div class=\"card-footer\">
+            <div class=\"card-header h-25\">
+              Username <span class = \"float-right\"><em>posted TIME ago</em></span>
+            </div>
+            <div class=\"card-body\">
+              <blockquote class=\"blockquote mb-0 h-25\">
+                <p style = \"height: 30px\">el comento.</p>
+                <!-- <footer class=\"blockquote-footer\">Someone famous in <cite title=\"Source Title\">Source Title</cite></footer> -->
+              </blockquote>
+            </div>
+        </div>
+      </div></br>
 
-    </div></br>";
+
+    ";
     $to_return .= $card_example;
     $resultArray = mysqli_fetch_array($resss, MYSQLI_ASSOC);
   }
