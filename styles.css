@@ -1,6 +1,9 @@
 .container{
     display: flex;
     justify-content: center;
+    background-image: url("spiderweb.jpg");
+    height: 1024px;
+    width: 100%;
 
 }
 #form{
